@@ -2,29 +2,29 @@
 
 #### Taskmgr
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.0.
+这个项目是由 [Angular CLI](https://github.com/angular/angular-cli) version 1.1.0.搭建
 
 #### Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+运行 `ng serve` 启动服务. 导航到 `http://localhost:4200/`. 如果你改变了任何源文件，应用程序会自动重新加载。
 
 #### Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+运行 `ng generate component component-name` 生成新组件. 指令如 `ng generate directive|pipe|service|class|module`.
 
 #### Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+运行 `ng build` 构建项目. 构建构件将存储在 `dist/` 文件夹. 可以添加指令 `-prod` 构建项目.
 
 #### Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+运行 `ng test` 执行单元测试 [Karma](https://karma-runner.github.io).
 
 #### Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+运行 `ng e2e` 执行端到端测试 [Protractor](http://www.protractortest.org/).
+在运行测试之前，请确保您处于 `ng serve`的服务下.
 
 #### Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+获得更多的帮助在 Angular CLI 运行 `ng help` 或者去看看 [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
