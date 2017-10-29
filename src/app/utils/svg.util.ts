@@ -6,10 +6,12 @@ export const loadSvgResources = ( ir: MdIconRegistry, ds: DomSanitizer ) => {
   const sidebarDir = `${imgDir}/sidebar`
   const dayDir = `${imgDir}/days`
   const avatarDir = `${imgDir}/avatar`
+  const iconDir = `${imgDir}/icons`
 
   /**
    * 头像图片
    */
+  ir.addSvgIcon('unassigned', ds.bypassSecurityTrustResourceUrl(`${avatarDir}/unassigned.svg`))
   ir.addSvgIconSetInNamespace('avatars', ds.bypassSecurityTrustResourceUrl(`${avatarDir}/avatars.svg`))
 
   /**
@@ -28,6 +30,13 @@ export const loadSvgResources = ( ir: MdIconRegistry, ds: DomSanitizer ) => {
   ]
 
   days.forEach(d => ir.addSvgIcon(`day${d}`, ds.bypassSecurityTrustResourceUrl(`${dayDir}/day${d}.svg`)),)
+
+  /**
+   * 任务页面：添加、删除、移动按钮
+   */
+  ir.addSvgIcon('add', ds.bypassSecurityTrustResourceUrl(`${iconDir}/add.svg`))
+  ir.addSvgIcon('delete', ds.bypassSecurityTrustResourceUrl(`${iconDir}/delete.svg`))
+  ir.addSvgIcon('move', ds.bypassSecurityTrustResourceUrl(`${iconDir}/move.svg`))
 
 
 };

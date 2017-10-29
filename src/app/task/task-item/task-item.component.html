@@ -1,3 +1,20 @@
-<p>
-  task-item works!
-</p>
+<md-list-item class="container"
+              [ngClass]="{
+                  'priority-normal':item.priority===3,
+                  'priority-important':item.priority===2,
+                  'priority-emergency':item.priority===1
+              }"
+              (click)="onItemClick()">
+  <md-checkbox class="completion-status"
+               [checked]="item.completed"
+               (click)="onCheckBoxClick($event)"
+  ></md-checkbox>
+  <div md-line class="content" [ngClass]="{'completed': item.completed}">
+    <span [md-tooltip]="item.desc">{{item.desc}}</span>
+  </div>
+  <div md-line class="bottom-bar">
+    <span class="due-date" *ngIf="item.dueDate">{{item.dueDate | date: "dd-MM-yy"}}</span>
+    <md-icon *ngIf="item.reminder">alarm</md-icon>
+  </div>
+  <md-icon class="avatar" [svgIcon]="avatar" md-list-avatar></md-icon>
+</md-list-item>

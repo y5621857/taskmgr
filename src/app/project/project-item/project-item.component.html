@@ -10,7 +10,7 @@
     {{item.desc}}
   </md-card-content>
   <md-card-actions>
-    <button md-button type="button">
+    <button md-button type="button" (click)="onEditClick()">
       <md-icon>note</md-icon>
       <span>编辑</span>
     </button>
@@ -18,7 +18,7 @@
       <md-icon>group_add</md-icon>
       <span>邀请</span>
     </button>
-    <button md-button type="button">
+    <button md-button type="button" (click)="onDelClick()">
       <md-icon>delete</md-icon>
       <span>删除</span>
     </button>
