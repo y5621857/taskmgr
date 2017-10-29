@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material'
 
 @Component({
   selector: 'app-new-task-list',
   templateUrl: './new-task-list.component.html',
-  styleUrls: ['./new-task-list.component.scss']
+  styleUrls: [ './new-task-list.component.scss' ]
 })
 export class NewTaskListComponent implements OnInit {
 
-  constructor() { }
+  private title = ''
 
-  ngOnInit() {
+  constructor ( @Inject(MD_DIALOG_DATA) private data,
+                private dialogRef: MdDialogRef<NewTaskListComponent> ) {
+  }
+
+  ngOnInit () {
+    this.title = this.data.title
+  }
+
+  /**
+   * 保存按钮
+   */
+  onSave(){
+    this.dialogRef.close(this.title)
   }
 
 }
