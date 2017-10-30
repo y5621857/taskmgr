@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { MdDialog } from '@angular/material'
 
+import { slideToRight } from "../../anims/router.anim";
 import { NewTaskComponent } from "../new-task/new-task.component";
 import { CopyTaskComponent } from "../copy-task/copy-task.component";
 import { ConfirmDialogComponent } from "../../shared/confirm-dialog/confirm-dialog.component";
@@ -9,9 +10,14 @@ import { NewTaskListComponent } from "../new-task-list/new-task-list.component";
 @Component({
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
-  styleUrls: [ './task-home.component.scss' ]
+  styleUrls: [ './task-home.component.scss' ],
+  animations:[
+    slideToRight
+  ]
 })
 export class TaskHomeComponent implements OnInit {
+
+  @HostBinding('@routeAnim') state
 
   lists = [
     {
@@ -81,7 +87,7 @@ export class TaskHomeComponent implements OnInit {
    */
   launchNewListDialog () {
     const dialogRef = this.dialog.open(NewTaskListComponent, { data: { title: '创建列表' } })
-    dialogRef.afterClosed().subscribe(result=>console.log(result))
+    dialogRef.afterClosed().subscribe(result => console.log(result))
   }
 
   /**
@@ -96,7 +102,7 @@ export class TaskHomeComponent implements OnInit {
    */
   launchEditTaskDialog () {
     const dialogRef = this.dialog.open(NewTaskListComponent, { data: { title: '修改列表名称' } })
-    dialogRef.afterClosed().subscribe(result=>console.log(result))
+    dialogRef.afterClosed().subscribe(result => console.log(result))
   }
 
   /**

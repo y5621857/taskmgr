@@ -1,7 +1,9 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { SharedModule } from '../shared/shared.module'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HttpModule } from '@angular/http'
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AppRoutingModule } from "../app-routing.module";
 
 import { MdIconRegistry } from '@angular/material'
 import { DomSanitizer } from '@angular/platform-browser'
@@ -14,6 +16,7 @@ import 'hammerjs'
 
 @NgModule({
   imports: [
+    AppRoutingModule,
     SharedModule,
     BrowserAnimationsModule,
     HttpModule,
@@ -24,6 +27,7 @@ import 'hammerjs'
     SidebarComponent
   ],
   exports: [
+    AppRoutingModule,
     HeaderComponent,
     FooterComponent,
     SidebarComponent
