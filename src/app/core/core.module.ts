@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { loadSvgResources } from "../utils/svg.util";
+import 'rxjs/add/operator/take'
 
 import 'hammerjs'
 
@@ -31,7 +32,10 @@ import 'hammerjs'
     HeaderComponent,
     FooterComponent,
     SidebarComponent
-  ]
+  ],
+  providers: [
+    {provide:'BASE_CONFIG',useValue:'http://localhost:3000'}
+  ],
 })
 export class CoreModule {
   constructor ( @Optional() @SkipSelf() parent: CoreModule,

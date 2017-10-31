@@ -8,15 +8,15 @@ md-icon.avatar {
 }
 
 .priority-normal {
-  border-left:3px solid #a4a4a4;
+  border-left: 3px solid #a4a4a4;
 }
 
 .priority-important {
-  border-left:3px solid #ffaf38;
+  border-left: 3px solid #ffaf38;
 }
 
 .priority-emergency {
-  border-left:3px solid red;
+  border-left: 3px solid red;
 }
 
 .completed {
@@ -60,4 +60,9 @@ md-icon.avatar {
 
 :host {
   width: 100%;
+}
+
+.drag-start {
+  opacity: .5;
+  border: 2px dashed #ff525b;
 }

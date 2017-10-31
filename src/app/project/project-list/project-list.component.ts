@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MdDialog } from "@angular/material";
 
 import { slideToRight } from "../../anims/router.anim";
@@ -15,7 +15,8 @@ import { ConfirmDialogComponent } from "../../shared/confirm-dialog/confirm-dial
   animations: [
     slideToRight,
     listAnimation
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectListComponent implements OnInit {
 
@@ -35,7 +36,8 @@ export class ProjectListComponent implements OnInit {
     }
   ]
 
-  constructor ( private dialog: MdDialog ) {
+  constructor ( private dialog: MdDialog,
+                private cd: ChangeDetectorRef ) {
   }
 
   ngOnInit () {
@@ -59,6 +61,7 @@ export class ProjectListComponent implements OnInit {
         desc: '这是又一个新项目',
         coverImg: 'assets/img/covers/9.jpg',
       } ]
+      this.cd.markForCheck()
     })
   }
 
@@ -79,11 +82,12 @@ export class ProjectListComponent implements OnInit {
   /**
    * 打开删除弹出框
    */
-  launchDeleteDialog (project) {
+  launchDeleteDialog ( project ) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, { data: { title: "删除项目", content: "您确认删除该项目吗？" } });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
-      this.projects = this.projects.filter(p =>p.id!==project.id)
+      this.projects = this.projects.filter(p => p.id !== project.id)
+      this.cd.markForCheck()
     })
   }
 }

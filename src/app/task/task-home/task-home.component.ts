@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MdDialog } from '@angular/material'
 
 import { slideToRight } from "../../anims/router.anim";
@@ -11,9 +11,10 @@ import { NewTaskListComponent } from "../new-task-list/new-task-list.component";
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
   styleUrls: [ './task-home.component.scss' ],
-  animations:[
+  animations: [
     slideToRight
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskHomeComponent implements OnInit {
 
@@ -23,6 +24,7 @@ export class TaskHomeComponent implements OnInit {
     {
       id: 1,
       name: '待办',
+      order: 1,
       tasks: [ {
         id: 1,
         desc: '任务一：去星巴克买杯咖啡',
@@ -50,6 +52,7 @@ export class TaskHomeComponent implements OnInit {
     }, {
       id: 2,
       name: '进行中',
+      order: 2,
       tasks: [ {
         id: 1,
         desc: '任务三：项目代码审批',
@@ -76,16 +79,17 @@ export class TaskHomeComponent implements OnInit {
     }
   ]
 
-  constructor ( private dialog: MdDialog ) {
+  constructor( private dialog: MdDialog,
+               private cd: ChangeDetectorRef ) {
   }
 
-  ngOnInit () {
+  ngOnInit() {
   }
 
   /**
    * 添加新列表弹出框
    */
-  launchNewListDialog () {
+  launchNewListDialog() {
     const dialogRef = this.dialog.open(NewTaskListComponent, { data: { title: '创建列表' } })
     dialogRef.afterClosed().subscribe(result => console.log(result))
   }
@@ -93,14 +97,14 @@ export class TaskHomeComponent implements OnInit {
   /**
    * 打开添加任务弹出框
    */
-  launchNewTaskDialog () {
+  launchNewTaskDialog() {
     const dialogRef = this.dialog.open(NewTaskComponent, { data: { title: '创建任务' } })
   }
 
   /**
    * 打开修改列表名称弹出框
    */
-  launchEditTaskDialog () {
+  launchEditTaskDialog() {
     const dialogRef = this.dialog.open(NewTaskListComponent, { data: { title: '修改列表名称' } })
     dialogRef.afterClosed().subscribe(result => console.log(result))
   }
@@ -108,23 +112,49 @@ export class TaskHomeComponent implements OnInit {
   /**
    * 打开移动本列表所有内容弹出框
    */
-  launchCopyTaskDialog () {
+  launchCopyTaskDialog() {
     const dialogRef = this.dialog.open(CopyTaskComponent, { data: { lists: this.lists } })
   }
 
   /**
    * 打开修改任务弹出框
    */
-  launchUpdateTaskDialog ( task ) {
+  launchUpdateTaskDialog( task ) {
     const dialogRef = this.dialog.open(NewTaskComponent, { data: { title: '修改任务', task: task } })
   }
 
   /**
    * 打开删除列表弹出框
    */
-  launchDelListConfirmDialog () {
+  launchDelListConfirmDialog() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, { data: { title: '删除列表', content: '您确定删除该任务列表吗？' } })
     dialogRef.afterClosed().subscribe(result => console.log(result))
+  }
+
+  /**
+   * 拖拽事件结束
+   */
+  handleMove( srcData, list ) {
+    switch (srcData.tag) {
+      case 'task-item':
+        console.log('handle item')
+        break
+      case 'task-list':
+        console.log('handle list')
+        const srclist = srcData.data
+        const tempOrder = srclist.order
+        srclist.order = list.order
+        list.order = tempOrder
+        break
+
+    }
+  }
+
+  /**
+   * 快速创建一个任务
+   */
+  handleQuickTask( desc: string ) {
+    console.log(desc)
   }
 
 }

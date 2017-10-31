@@ -9,3 +9,10 @@ md-icon.avatar {
 md-card {
   width: 600px;
 }
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+}
