@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from "../app-routing.module";
+import { ServicesModule } from "../services/services.module";
 
 import { MdIconRegistry } from '@angular/material'
 import { DomSanitizer } from '@angular/platform-browser'
@@ -18,6 +19,7 @@ import 'hammerjs'
 @NgModule({
   imports: [
     AppRoutingModule,
+    ServicesModule.forRoot(),
     SharedModule,
     BrowserAnimationsModule,
     HttpModule,
@@ -34,13 +36,18 @@ import 'hammerjs'
     SidebarComponent
   ],
   providers: [
-    {provide:'BASE_CONFIG',useValue:'http://localhost:3000'}
+    {
+      provide: 'BASE_CONFIG',
+      useValue: {
+        uri: 'http://localhost:3000'
+      }
+    }
   ],
 })
 export class CoreModule {
-  constructor ( @Optional() @SkipSelf() parent: CoreModule,
-                ir: MdIconRegistry,
-                ds: DomSanitizer ) {
+  constructor( @Optional() @SkipSelf() parent: CoreModule,
+               ir: MdIconRegistry,
+               ds: DomSanitizer ) {
     if (parent) {
       throw new Error('模块已经存在，不能再次加载模块')
     }

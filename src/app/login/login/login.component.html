@@ -25,12 +25,12 @@
         每日佳句
       </md-card-title>
       <md-card-subtitle>
-        或许我曾做过的最好的事，就是对你一如既往并且未曾动摇的坚持。
+        {{quote.cn}}
       </md-card-subtitle>
     </md-card-header>
-    <img md-card-image src="/assets/lizhi.fallbackground.jpeg" alt="">
+    <img md-card-image [src]="quote.pic" alt="quote pic">
     <md-card-content>
-      Perhaps the best thing I've ever done is to stick to you as never before and never waver.
+      {{quote.en}}
     </md-card-content>
   </md-card>
 </form>
