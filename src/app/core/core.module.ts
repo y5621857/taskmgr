@@ -13,6 +13,8 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { loadSvgResources } from "../utils/svg.util";
 import 'rxjs/add/operator/take'
+import 'rxjs/observable/combineLatest'
+import '../utils/debug.util'
 
 import 'hammerjs'
 
