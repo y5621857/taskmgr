@@ -113,7 +113,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
    * 打开邀请弹出框
    */
   launchInviteDialog() {
-    const dialogRef = this.dialog.open(InviteComponent);
+    const dialogRef = this.dialog.open(InviteComponent, { data: { members: [] } });
   }
 
   /**

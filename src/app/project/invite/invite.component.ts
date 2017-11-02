@@ -1,34 +1,32 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material'
+import { User } from "../../domian";
 
 @Component({
   selector: 'app-invite',
   templateUrl: './invite.component.html',
   styleUrls: [ './invite.component.scss' ],
-  changeDetection:ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InviteComponent implements OnInit {
 
-  private items = [
-    {
-      id: 1,
-      name: '张三'
-    }, {
-      id: 2,
-      name: '李四'
-    }, {
-      id: 3,
-      name: '王五'
-    },
-  ]
+  members: User[] = []
 
-  constructor () {
+  constructor( @Inject(MD_DIALOG_DATA) private data,
+               private dialogRef: MdDialogRef<InviteComponent>, ) {
   }
 
-  ngOnInit () {
+  ngOnInit() {
+    this.members = [...this.data.members]
   }
 
-  dispalyUser ( user: { id: string, name: string } ) {
-    return user ? user.name : ''
+  onSubmit( { value, valid }, ev: Event ) {
+    ev.preventDefault()
+    if (!valid) {
+      return
+    }
+
+    this.dialogRef.close(this.members)
   }
 
 }

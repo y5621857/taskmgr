@@ -1,4 +1,47 @@
 {
+  "users": [
+    {
+      "password": "wp123456",
+      "name": "王芃",
+      "avatar": "avatars:svg-1",
+      "email": "wpcfan@163.com",
+      "id": "37489e0c-df34-c261-71c4-ce75357e3035",
+      "projectIds": [
+        "Sk2HaTagb",
+        "Hya1moGb-"
+      ]
+    },
+    {
+      "password": "Ls123456",
+      "name": "李四",
+      "avatar": "avatars:svg-2",
+      "email": "lisi@163.com",
+      "id": "BkkDvwee-",
+      "projectIds": [
+        "Sk2HaTagb"
+      ]
+    },
+    {
+      "password": "Zs123456",
+      "name": "张三",
+      "avatar": "avatars:svg-5",
+      "email": "zhangsan@163.com",
+      "id": "3",
+      "projectIds": [
+        "Sk2HaTagb"
+      ]
+    },
+    {
+      "password": "Zs123456",
+      "name": "张明",
+      "avatar": "avatars:svg-5",
+      "email": "zhangming@163.com",
+      "id": "4",
+      "projectIds": [
+        "Sk2HaTagb"
+      ]
+    }
+  ],
   "projects": [
     {
       "id": "1",
