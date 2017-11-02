@@ -10,7 +10,7 @@ export class RegisterComponent implements OnInit {
 
   private items: string[]
   form: FormGroup
-  private readonly avatarName ='avatars'
+  private readonly avatarName = 'avatars'
 
   constructor( private fb: FormBuilder ) {
   }
@@ -24,13 +24,25 @@ export class RegisterComponent implements OnInit {
 
     this.items = nums.map(d => `avatars:svg-${d}`)
 
-    this.form=this.fb.group({
-      email:[],
-      name:[],
-      password:[],
-      repeat:[],
-      avatar:[img]
+    this.form = this.fb.group({
+      email: [],
+      name: [],
+      password: [],
+      repeat: [],
+      avatar: [ img ],
+      dateOfBirth: ['1990-01-01']
     })
+  }
+
+  /**
+   * 提交表单
+   */
+  onSubmit( { value, valid }, ev: Event ) {
+    ev.preventDefault()
+    if (!valid) {
+      return;
+    }
+    console.log(value)
   }
 
 }

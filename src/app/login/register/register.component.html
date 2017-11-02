@@ -16,12 +16,13 @@
       <md-input-container class="full-width">
         <input mdInput type="password" placeholder="确认密码" formControlName="repeat">
       </md-input-container>
-      <app-image-list-select [useSvgIcon]="true"
+      <app-image-list-select [useSvgIcon]="'true'"
                              [cols]="6"
                              [title]="'请选择头像：'"
                              [items]="items"
                              formControlName="avatar"
       ></app-image-list-select>
+      <app-age-input formGroupName="dateOfBirth"></app-age-input>
       <button md-raised-button type="submit" color="primary">注册</button>
     </md-card-content>
     <md-card-actions class="text-right">
