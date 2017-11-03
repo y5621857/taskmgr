@@ -25,12 +25,12 @@
         每日佳句
       </md-card-title>
       <md-card-subtitle>
-        {{quote.cn}}
+        {{(quote$ | async).cn}}
       </md-card-subtitle>
     </md-card-header>
-    <img md-card-image [src]="quote.pic" alt="quote pic">
+    <img md-card-image [src]="(quote$ | async).pic" alt="quote pic">
     <md-card-content>
-      {{quote.en}}
+      {{(quote$ | async).en}}
     </md-card-content>
   </md-card>
 </form>

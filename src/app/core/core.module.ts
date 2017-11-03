@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from "../app-routing.module";
 import { ServicesModule } from "../services/services.module";
+import { AppStoreModule } from '../reducers'
 
 import { MdIconRegistry } from '@angular/material'
 import { DomSanitizer } from '@angular/platform-browser'
@@ -42,6 +43,7 @@ import 'hammerjs'
   imports: [
     AppRoutingModule,
     ServicesModule.forRoot(),
+    AppStoreModule,
     SharedModule,
     BrowserAnimationsModule,
     HttpModule,
