@@ -1,0 +1,9 @@
+.id-input{
+  flex: 1;
+}
+:host{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+}

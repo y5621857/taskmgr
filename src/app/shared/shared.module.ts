@@ -22,6 +22,7 @@ import {
   MdSidenavModule,
   MdButtonToggleModule,
   MdChipsModule,
+  MdTabsModule,
 } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -30,6 +31,8 @@ import { DirectiveModule } from "../directive/directive.module";
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 import { AgeInputComponent } from './age-input/age-input.component';
 import { ChipsListComponent } from './chips-list/chips-list.component';
+import { IdentityInputComponent } from './identity-input/identity-input.component';
+import { AreaListComponent } from './area-list/area-list.component';
 
 @NgModule({
   imports: [
@@ -54,9 +57,10 @@ import { ChipsListComponent } from './chips-list/chips-list.component';
     MdNativeDateModule,
     MdSelectModule,
     MdSidenavModule,
-    DirectiveModule,
     MdButtonToggleModule,
     MdChipsModule,
+    MdTabsModule,
+    DirectiveModule,
   ],
   exports: [
     CommonModule,
@@ -82,17 +86,22 @@ import { ChipsListComponent } from './chips-list/chips-list.component';
     MdSidenavModule,
     MdButtonToggleModule,
     MdChipsModule,
+    MdTabsModule,
     DirectiveModule,
     ImageListSelectComponent,
     AgeInputComponent,
     ChipsListComponent,
+    IdentityInputComponent,
+    AreaListComponent,
   ],
   entryComponents: [ ConfirmDialogComponent ],
   declarations: [
     ConfirmDialogComponent,
     ImageListSelectComponent,
     AgeInputComponent,
-    ChipsListComponent
+    ChipsListComponent,
+    IdentityInputComponent,
+    AreaListComponent
   ]
 })
 export class SharedModule {

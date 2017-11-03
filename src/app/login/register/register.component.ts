@@ -30,7 +30,9 @@ export class RegisterComponent implements OnInit {
       password: [],
       repeat: [],
       avatar: [ img ],
-      dateOfBirth: ['1990-01-01']
+      dateOfBirth: [ '1990-01-01' ],
+      address: [],
+      identity: []
     })
   }
 
