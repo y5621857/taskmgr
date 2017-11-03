@@ -34,4 +34,4 @@ export class LoadFailAction implements Action {
 }
 
 
-export type Actiosns = LoadAction | LoadSuccessAction | LoadFailAction
+export type Actions = LoadAction | LoadSuccessAction | LoadFailAction

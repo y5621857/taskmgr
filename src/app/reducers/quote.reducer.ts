@@ -13,7 +13,7 @@ export const initialState: State = {
   }
 }
 
-export function reducer( state: State = initialState, action: actions.Actiosns ): State {
+export function reducer( state: State = initialState, action: actions.Actions ): State {
   switch (action.type) {
     case actions.ActionTypes.LOAD_SUCCESS:
       return { ...state, quote: <Quote>action.payload };
