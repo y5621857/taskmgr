@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store'
 import { Quote } from "../../domian/quote.module";
 import * as fromRoot from '../../reducers'
 import * as actions from '../../actions/quote.action'
+import * as authActions from '../../actions/auth.action'
 
 @Component({
   selector: 'app-login',
@@ -26,10 +27,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      email: [ 'yang@163.com', Validators.compose([
+      email: [ 'yangyi@163.com', Validators.compose([
         Validators.required,
         Validators.email,
-        this.validate
       ]) ],
       password: [ '', Validators.required ]
     })
@@ -40,26 +40,11 @@ export class LoginComponent implements OnInit {
    */
   onSubmit( { value, valid }, ev: Event ) {
     ev.preventDefault()
-    console.log(value)
-    console.log(valid)
-  }
-
-  /**
-   * 自定义验证器
-   */
-  validate( c: FormControl ): { [key: string]: any } {
-    if (!c.value) {
-      return null
+    if (!valid) {
+      return
     }
 
-    const pattern = /^yang+/
-    if (pattern.test(c.value)) {
-      return null
-    } else {
-      return {
-        emailNotValid: 'the email must start with yang'
-      }
-    }
+    this.store$.dispatch(new authActions.LoginAction(value))
   }
 
 }

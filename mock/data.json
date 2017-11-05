@@ -40,6 +40,17 @@
       "projectIds": [
         "Sk2HaTagb"
       ]
+    },
+    {
+      "email": "yangyi@163.com",
+      "name": "yangyi",
+      "password": "123123",
+      "repeat": "123123",
+      "avatar": "avatars:svg-2",
+      "dateOfBirth": "1987-11-05",
+      "address": null,
+      "identity": null,
+      "id": "B1F7Cgh0-"
     }
   ],
   "projects": [

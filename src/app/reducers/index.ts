@@ -14,18 +14,24 @@ import { compose } from '@ngrx/core/compose'
 import { createSelector } from 'reselect'
 
 import * as fromQuote from './quote.reducer';
+import * as fromAuth from './auth.reducer';
+
 import { environment } from "../../environments/environment";
+import { Auth } from "../domian/auth.module";
 
 export interface State {
-  quote: fromQuote.State;
+  quote: fromQuote.State
+  auth: Auth
 }
 
 const initialState: State = {
   quote: fromQuote.initialState,
+  auth: fromAuth.initialState
 };
 
 const reducers = {
-  quote: fromQuote.reducer
+  quote: fromQuote.reducer,
+  auth: fromAuth.reducer
 }
 
 /**
@@ -40,6 +46,7 @@ export function reducer( state: State = initialState, action: { type: string, pa
 }
 
 export const getQuoteState = ( state: State ) => state.quote
+export const getAuthState = ( state: State ) => state.auth
 
 export const getQuote = createSelector(getQuoteState, fromQuote.getQuote)
 
