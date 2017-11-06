@@ -23,7 +23,7 @@ export class AuthEffects {
       .catch(err => Observable.of(new actions.LoginFailAction(JSON.stringify(err))))
     )
 
-  /**
+  /*
    * 注册Effect
    */
   @Effect()
@@ -41,7 +41,7 @@ export class AuthEffects {
   @Effect()
   logout$: Observable<Action> = this.actions$
     .ofType(actions.ActionTypes.LOGOUT)
-    .map(_ => go( ['/'] ))
+    .map(_ => go([ '/' ]))
 
   /**
    * 登录成功
@@ -49,7 +49,7 @@ export class AuthEffects {
   @Effect()
   navigateHome$: Observable<Action> = this.actions$
     .ofType(actions.ActionTypes.LOGIN_SUCCESS)
-    .map(() => go(['/projects']));
+    .map(() => go([ '/projects' ]));
 
   /**
    * 注册成功
@@ -57,7 +57,7 @@ export class AuthEffects {
   @Effect()
   registerAndHome$: Observable<Action> = this.actions$
     .ofType(actions.ActionTypes.REGISTER_SUCCESS)
-    .map(() => go(['/projects']));
+    .map(() => go([ '/projects' ]));
 
   constructor( private actions$: Actions,
                private service$: AuthService ) {

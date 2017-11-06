@@ -35,6 +35,7 @@ import 'rxjs/add/operator/reduce'
 import 'rxjs/add/operator/debounceTime'
 import 'rxjs/add/operator/take'
 import 'rxjs/add/operator/count'
+import 'rxjs/add/operator/withLatestFrom'
 
 import '../utils/debug.util'
 

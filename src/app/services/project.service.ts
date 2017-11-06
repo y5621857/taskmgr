@@ -2,7 +2,8 @@ import { Injectable, Inject } from '@angular/core';
 import { Http, Headers } from '@angular/http'
 import { Observable } from 'rxjs/Observable'
 
-import { Project } from "../domian";
+import { Project, User } from "../domian";
+import * as _ from 'lodash'
 
 @Injectable()
 export class ProjectService {
@@ -78,6 +79,31 @@ export class ProjectService {
     return delTasks$
       .switchMap(_ => this.http.delete(`${this.config.uri}/${this.domain}/${project.id}`))
       .mapTo(project)
+  }
+
+  /**
+   * 添加成员 GET
+   * @param {Project} project
+   * @returns {Observable<Response>}
+   */
+  invite( projectId: string, user: User[] ): Observable<Project> {
+    const uri = `${this.config.uri}/${this.domain}/${projectId}`
+
+
+    return this.http
+      .get(uri)
+      .map(res => res.json())
+      .switchMap(( project: Project ) => {
+        const existingMembers = project.members
+        const invitedIds = user.map(user => user.id)
+        const newIds = _.union(existingMembers, invitedIds)
+
+        return this.http
+          .patch(uri, JSON.stringify({ members: newIds }), {
+            headers: this.headers
+          })
+          .map(res => res.json())
+      })
   }
 
 

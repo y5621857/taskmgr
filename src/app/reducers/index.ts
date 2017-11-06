@@ -15,6 +15,7 @@ import { createSelector } from 'reselect'
 
 import * as fromQuote from './quote.reducer';
 import * as fromAuth from './auth.reducer';
+import * as fromProject from './project.reducer';
 
 import { environment } from "../../environments/environment";
 import { Auth } from "../domian/auth.module";
@@ -22,16 +23,19 @@ import { Auth } from "../domian/auth.module";
 export interface State {
   quote: fromQuote.State
   auth: Auth
+  projects: fromProject.State
 }
 
 const initialState: State = {
   quote: fromQuote.initialState,
-  auth: fromAuth.initialState
+  auth: fromAuth.initialState,
+  projects: fromProject.initialState,
 };
 
 const reducers = {
   quote: fromQuote.reducer,
-  auth: fromAuth.reducer
+  auth: fromAuth.reducer,
+  projects: fromProject.reducer,
 }
 
 /**
@@ -47,8 +51,10 @@ export function reducer( state: State = initialState, action: { type: string, pa
 
 export const getQuoteState = ( state: State ) => state.quote
 export const getAuthState = ( state: State ) => state.auth
+export const getProjectState = ( state: State ) => state.projects
 
 export const getQuote = createSelector(getQuoteState, fromQuote.getQuote)
+export const getProjects = createSelector(getProjectState, fromProject.getAll)
 
 @NgModule({
   imports: [
